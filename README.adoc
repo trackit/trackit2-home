@@ -1,0 +1,22 @@
+[#trackit-logo]
+
+image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/logo.png[]
+
+TrackIt helps you to optimize your AWS cloud
+
+= Trackit (v2)
+
+This is the new iteration of MSolution’s Trackit, a tool to optimize your AWS
+usage and spending.
+
+== Don't want to self-host trackit?
+
+We run our own version, check it out at https://trackit.io/[TrackIt.IO]
+
+== Repository structure
+
+* Deployment tools: https://github.com/trackit/trackit
+* Go analytic platform: https://github.com/trackit/trackit-server
+* ReactJS UI: https://github.com/trackit/trackit-client
+
+You can still find our legacy version at https://github.com/trackit/trackit-legacy. In a few days, you should get all the information to run the new version (v2) in this repository.
