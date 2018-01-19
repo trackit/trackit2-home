@@ -1,0 +1,58 @@
+version: '3'
+services:
+  ui:
+    build:
+      context: trackit2-client/
+      dockerfile: Dockerfile
+      args:
+        - API_URL=http://localhost:8080
+    networks:
+      - app
+    ports:
+      - 80:80
+      - 443:443
+  sql:
+    build: trackit2/docker/sql/
+    environment:
+      - MYSQL_USER=${TRACKIT_SQL_USER:-trackit}
+      - MYSQL_PASSWORD=${TRACKIT_SQL_PASSWORD:-trackitpassword}
+      - MYSQL_DATABASE=${TRACKIT_SQL_DATABASE:-trackit}
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    networks:
+      - app
+    ports:
+      - '127.0.0.1:3306:3306'
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.3
+    environment:
+      - ES_JAVA_OPTS "-Xms1g -Xmx1g"
+    networks:
+      - app
+    ports:
+      - '127.0.0.1:9200:9200'
+  api:
+    build: trackit2/docker/server/
+    links:
+      - sql
+    command:
+      - -sql-address=${TRACKIT_SQL_USER:-trackit}:${TRACKIT_SQL_PASSWORD:-trackitpassword}@tcp(sql:3306)/${TRACKIT_SQL_DATABASE:-trackit}?parseTime=true
+      - -es-address=${TRACKIT_ES_ADDRESS:-http://es:9200}
+      - -http-address=[::]:80
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+    ports:
+      - 8080:80
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.19.84.0/24
+
+# vim: ts=2 sts=2 et:

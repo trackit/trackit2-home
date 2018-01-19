@@ -1,13 +1,13 @@
 [#trackit-logo]
-
 image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/logo.png[]
 
 TrackIt helps you to optimize your AWS cloud
 
 = Trackit (v2)
 
-This is the new iteration of MSolution’s Trackit, a tool to optimize your AWS
+This is the new iteration of MSolution’s TrackIt, a tool to optimize your AWS
 usage and spending.
+This repository contains the deployment tools to run TrackIt easily on your own infrastructure.
 
 == Don't want to self-host trackit?
 
@@ -16,7 +16,36 @@ We run our own version, check it out at https://trackit.io/[TrackIt.IO]
 == Repository structure
 
 * Deployment tools: https://github.com/trackit/trackit
-* Go analytic platform: https://github.com/trackit/trackit-server
+* Go server: https://github.com/trackit/trackit-server
 * ReactJS UI: https://github.com/trackit/trackit-client
 
-You can still find our legacy version at https://github.com/trackit/trackit-legacy. In a few days, you should get all the information to run the new version (v2) in this repository.
+You can still find our legacy version at https://github.com/trackit/trackit-legacy.
+
+= Installation
+
+=== #0 Be sure all requirements below are met
+
+- Install https://docs.docker.com/engine/installation/[Docker]
+- Install https://docs.docker.com/compose/install/[Docker Compose]
+- Install https://docs.aws.amazon.com/cli/latest/userguide/installing.html[AWS CLI] and https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html[configure your credentials]
+
+=== #1 Clone this repository
+
+[source,sh]
+----
+$> git clone https://github.com/trackit/trackit && cd trackit
+----
+
+=== #2 Configure the API_URL
+If you are not running TrackIt on your local machine, you need to configure the URL of the API:
+[source,sh]
+----
+$> vi docker-compose.yml
+line 8: - API_URL=http://localhost:8080 # replace localhost by the public API of the host
+----
+
+=== #3 Start TrackIt
+[source,sh]
+----
+$> ./start.sh
+----
