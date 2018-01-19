@@ -28,6 +28,7 @@ You can still find our legacy version at https://github.com/trackit/trackit-lega
 - Install https://docs.docker.com/engine/installation/[Docker]
 - Install https://docs.docker.com/compose/install/[Docker Compose]
 - Install https://docs.aws.amazon.com/cli/latest/userguide/installing.html[AWS CLI] and https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html[configure your credentials]
+- Make sure the port 80 and 8080 are open
 
 === #1 Clone this repository
 
