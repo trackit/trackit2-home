@@ -49,3 +49,8 @@ line 8: - API_URL=http://localhost:8080 # replace localhost by the public API of
 ----
 $> ./start.sh
 ----
+
+= Screenshots
+
+[#cost-breakdown]
+image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/v2_cost_breakdown.png[]
