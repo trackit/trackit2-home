@@ -2,9 +2,6 @@ version: 2
 jobs:
    build:
      machine: true
-     branches:
-       only:
-         - master
      steps:
        - run:
           name: Create AWS credentials
@@ -19,9 +16,6 @@ jobs:
           command: cd /home/circleci/project/trackit && ./start.sh
    test:
      machine: true
-     branches:
-       only:
-         - master
      steps:
        - run:
           name: Make sure the containers are running
