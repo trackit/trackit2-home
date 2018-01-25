@@ -3,7 +3,7 @@ jobs:
    build:
      machine:
        python:
-         version: pypy-3.5.3
+         version: pypy-3.5.2
      filters:
        branches:
          only: master
