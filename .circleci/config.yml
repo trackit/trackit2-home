@@ -1,0 +1,42 @@
+version: 2
+jobs:
+   build:
+     machine: true
+     branches:
+       only:
+         - master
+     steps:
+       - run:
+          name: Create AWS credentials
+          command: |
+            mkdir ~/.aws
+            echo -e "[default]\naws_access_key_id = fakeid\naws_secret_access_key = fakesecret\naws_session_token = faketoken\nregion = us-west-2" > ~/.aws/credentials
+       - run:
+          name: Clone repository
+          command: git clone https://github.com/trackit/trackit
+       - run:
+          name: Start TrackIt
+          command: cd /home/circleci/project/trackit && ./start.sh
+   test:
+     machine: true
+     branches:
+       only:
+         - master
+     steps:
+       - run:
+          name: Make sure the containers are running
+          command: if [[ $(docker ps --format "{{.Names}}" | wc -l) -lt 4 ]]; then exit 1; else exit 0; fi
+       - run:
+          name: Check the total number of containers
+          command: if [[ $(docker ps -a --format "{{.Names}}" | wc -l) -lt 5 ]]; then exit 1; else exit 0; fi
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
