@@ -12,6 +12,9 @@ jobs:
           name: Clone repository
           command: git clone https://github.com/trackit/trackit
        - run:
+          name: Set vm.max_map_count
+          command: sudo sysctl -w vm.max_map_count=262144
+       - run:
           name: Start TrackIt
           command: cd /home/circleci/project/trackit && ./start.sh
    test:
