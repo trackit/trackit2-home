@@ -19,4 +19,9 @@ echo "===> building containers"
 echo "===> starting trackit"
 ./trackit2/scripts/awsenv default docker-compose up -d
 
+if [[ $(docker ps | grep "trackit_" | wc -l) -lt 4 ]]
+then
+  echo "An error occured while starting TrackIt"
+  exit 1
+fi
 echo "===> installation completed, TrackIt is now running on port 80"
