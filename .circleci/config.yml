@@ -3,7 +3,9 @@ jobs:
    build:
      machine:
        pre:
-         - pyenv global 3.5.2
+         - cd /opt/circleci/.pyenv; git pull
+       python:
+         version: 3.6.1
      filters:
        branches:
          only: master
