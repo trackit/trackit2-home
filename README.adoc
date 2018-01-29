@@ -31,6 +31,22 @@ You can still find our legacy version at https://github.com/trackit/trackit-lega
 - Make sure the port 80 and 8080 are open
 - Docker-for-Mac and Docker-for-Windows users: Increase the docker memory limit to 4GB to allow elasticsearch to run properly
 
+Here is the access your AWS IAM credentials will need to run correctly TrackIt
+[source,json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AssumeRole",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "*"
+        }
+    ]
+}
+----
+
 === #1 Clone this repository
 
 [source,sh]
