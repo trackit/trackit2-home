@@ -3,9 +3,7 @@ jobs:
    build:
      machine:
        pre:
-         - pyenv global 3.5.1
-       python:
-         version: 3.5.1
+         - pyenv global venv3
      filters:
        branches:
          only: master
