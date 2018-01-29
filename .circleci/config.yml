@@ -2,22 +2,13 @@ version: 2
 jobs:
    build:
      machine:
-       environment:
-         SRC_PREFIX_DIR: ${HOME}/src
-         INSTALL_PREFIX_DIR: ${HOME}/opt
-         PATH: ${INSTALL_PREFIX_DIR}/py-351/bin:${PATH}
+       pre:
+         - pyenv global 3.5.2
+       python:
+         version: 3.5.2
      filters:
        branches:
          only: master
-     pre:
-       # Install python3 from sources
-       - mkdir -p ${SRC_PREFIX_DIR}
-       - mkdir -p ${INSTALL_PREFIX_DIR}/py-351
-       - wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
-       - tar -xf Python-3.5.1.tgz -C ${SRC_PREFIX_DIR}
-       - cd ${SRC_PREFIX_DIR}/Python-3.5.1/ ; ./configure --prefix=${INSTALL_PREFIX_DIR}/py-351
-       - cd ${SRC_PREFIX_DIR}/Python-3.5.1/ ; make
-       - cd ${SRC_PREFIX_DIR}/Python-3.5.1/ ; make install
      steps:
        - run:
           name: Create AWS credentials
@@ -32,7 +23,7 @@ jobs:
           command: sudo sysctl -w vm.max_map_count=262144
        - run:
           name: Start TrackIt
-          command: cd /home/circleci/project/trackit && ./start.sh
+          command: alias python3=python; cd /home/circleci/project/trackit && ./start.sh
        - run:
           name: Make sure the containers are running
           command: if [[ $(docker ps --format "{{.Names}}" | wc -l) -lt 4 ]]; then exit 1; else exit 0; fi
