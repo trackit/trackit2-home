@@ -2,14 +2,15 @@ version: 2
 jobs:
    build:
      machine:
-       pre:
-         - pyenv global 3.5.2
        python:
          version: 3.5.2
      filters:
        branches:
          only: master
      steps:
+       - run:
+          name: Set python 3 pyenv
+          command: pyenv global 3.5.2
        - run:
           name: Create AWS credentials
           command: |
