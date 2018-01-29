@@ -24,7 +24,7 @@ jobs:
           command: sudo sysctl -w vm.max_map_count=262144
        - run:
           name: Start TrackIt
-          command: alias python3=python; cd /home/circleci/project/trackit && ./start.sh
+          command: cd /home/circleci/project/trackit && ./start.sh
        - run:
           name: Make sure the containers are running
           command: if [[ $(docker ps --format "{{.Names}}" | wc -l) -lt 4 ]]; then exit 1; else exit 0; fi
