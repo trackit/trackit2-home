@@ -3,7 +3,7 @@
 echo "===> checking vm.max_map_count setting"
 
 min_mmap=262144
-current_mmap=$(sysctl -n vm.max_map_count)
+current_mmap=$(cat /proc/sys/vm/max_map_count)
 if [[ -n $current_mmap ]] && [[ $current_mmap -lt $min_mmap ]]
 then
   echo "your virtual memory max map count is too low to allow elasticsearch to run properly, please run the following command before restarting the installation:"
