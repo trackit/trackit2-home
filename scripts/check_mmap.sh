@@ -3,6 +3,7 @@
 echo "===> checking vm.max_map_count setting"
 
 min_mmap=262144
+export PATH=$PATH:/sbin
 current_mmap=$(sysctl -n vm.max_map_count)
 if [[ -n $current_mmap ]] && [[ $current_mmap -lt $min_mmap ]]
 then
