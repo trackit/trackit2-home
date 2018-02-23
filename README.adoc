@@ -68,6 +68,10 @@ line 8: - API_URL=http://localhost:8080 # replace localhost by the public API of
 $> ./start.sh
 ----
 
+== Configuring
+
+More information about configuring TrackIt? Check our step-by-step guide https://trackit.io/installing-setting-trackit-up-step-by-step/[here]
+
 = Screenshots
 
 [#cost-breakdown]
