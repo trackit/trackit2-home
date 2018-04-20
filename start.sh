@@ -12,6 +12,10 @@ pushd "scripts"
 popd
 mv -f ./main ./trackit2/docker/server
 
+pushd "trackit2/scripts"
+echo "==> copying schema.sql"
+./copy_schema.sh
+popd
 echo "===> pulling the docker containers"
 ./trackit2/scripts/awsenv default docker-compose pull
 echo "===> building containers"
