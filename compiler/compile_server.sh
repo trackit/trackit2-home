@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /root/go/src/github.com/trackit/trackit2
+cd /root/go/src/github.com/trackit/trackit-server
 echo "===> fetching dependencies"
 govendor sync -v
 
