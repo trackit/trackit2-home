@@ -1,6 +1,0 @@
-[submodule "trackit2-client"]
-	path = trackit2-client
-	url = https://github.com/trackit/trackit2-client
-[submodule "trackit-server"]
-	path = trackit-server
-	url = https://github.com/trackit/trackit-server
