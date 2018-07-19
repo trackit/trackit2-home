@@ -12,7 +12,7 @@ services:
       - 80:80
       - 443:443
   sql:
-    build: trackit2/docker/sql/
+    build: trackit-server/docker/sql/
     environment:
       - MYSQL_USER=${TRACKIT_SQL_USER:-trackit}
       - MYSQL_PASSWORD=${TRACKIT_SQL_PASSWORD:-trackitpassword}
@@ -31,7 +31,7 @@ services:
     ports:
       - '127.0.0.1:9200:9200'
   api:
-    build: trackit2/docker/server/
+    build: trackit-server/docker/server/
     links:
       - sql
     command:

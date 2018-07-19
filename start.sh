@@ -10,18 +10,18 @@ fi
 pushd "scripts"
 ./compile_server.sh
 popd
-mv -f ./main ./trackit2/docker/server
+mv -f ./main ./trackit-server/docker/server
 
-pushd "trackit2/scripts"
+pushd "trackit-server/scripts"
 echo "==> copying schema.sql"
 ./copy_schema.sh
 popd
 echo "===> pulling the docker containers"
-./trackit2/scripts/awsenv default docker-compose pull
+./trackit-server/scripts/awsenv default docker-compose pull
 echo "===> building containers"
-./trackit2/scripts/awsenv default docker-compose build
+./trackit-server/scripts/awsenv default docker-compose build
 echo "===> starting trackit"
-./trackit2/scripts/awsenv default docker-compose up -d
+./trackit-server/scripts/awsenv default docker-compose up -d
 
 if [[ $(docker ps | grep "trackit_" | wc -l) -lt 4 ]]
 then
