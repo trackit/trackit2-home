@@ -3,7 +3,9 @@ image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/l
 
 TrackIt helps you to optimize your AWS cloud
 
-= Trackit (v2)
+image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/v2_cost_breakdown.png[]
+
+= Trackit
 
 This is the new iteration of MSolution’s TrackIt, a tool to optimize your AWS
 usage and spending.
@@ -71,8 +73,3 @@ $> ./start.sh
 == Configuring
 
 More information about configuring TrackIt? Check our step-by-step guide https://trackit.io/installing-setting-trackit-up-step-by-step/[here]
-
-= Screenshots
-
-[#cost-breakdown]
-image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/v2_cost_breakdown.png[]
