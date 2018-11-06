@@ -3,17 +3,19 @@ image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/l
 
 TrackIt helps you to optimize your AWS cloud
 
-image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/v2_cost_breakdown.png[]
-
 = Trackit
 
-This is the new iteration of MSolution’s TrackIt, a tool to optimize your AWS
+This is a tool written in go to optimize your AWS
 usage and spending.
+
 This repository contains the deployment tools to run TrackIt easily on your own infrastructure.
+
+image::https://s3-us-west-2.amazonaws.com/trackit-public-artifacts/github-page/v2_cost_breakdown.png[]
+
 
 == Don't want to self-host trackit?
 
-We run our own version, check it out at https://trackit.io/[TrackIt.IO]
+We run our own version, check it out at https://trackit.io/[TrackIt]
 
 == Repository structure
 
